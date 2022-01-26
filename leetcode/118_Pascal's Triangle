@@ -1,0 +1,19 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(Arrays.asList(1));
+        for (int n = 1; n < numRows; n++) {
+            List<Integer> listOfEachRow = new ArrayList<>();
+            List<Integer> previousRow = result.get(n-1);
+            for (int r = 0; r <= n; r++) {
+                if (r == 0 || r == n) {
+                    listOfEachRow.add(1);
+                }else{
+                    listOfEachRow.add(previousRow.get(r-1) + previousRow.get(r));
+                }
+            }
+            result.add(listOfEachRow);
+        }
+        return result;   
+    }
+}
